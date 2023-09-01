@@ -6,19 +6,67 @@ Crie a classe, depois crie 5 instâncias baseadas na classe Aluno. Coloque as 5 
 Depois faça uma listagem na tela mostrando o nome de cada aluno e na frente se esteve em aula ou faltou.
 */
 
-class Aluno{
-    public $nome;
-    public $ra;
-    public $curso;
-    public $disciplinas;
-    public $presença;
-}
-
-function statusPresença({
-    if($presença == "1":
-        array_push($alunosPresentes);
-)}
-
-
-$alunosPresentes = [];
-$statusPresença($alunosPorSala)
+class Aluno {
+    private $nome;
+    private $curso;
+    private $disciplina;
+    private $presente;
+  
+    public function __construct($nome, $curso, $disciplina, $presente) {
+      $this->nome = $nome;
+      $this->curso = $curso;
+      $this->disciplina = $disciplina;
+      $this->presente = $presente;
+    }
+  
+    public function getNome() {
+      return $this->nome;
+    }
+  
+    public function getCurso() {
+      return $this->curso;
+    }
+  
+    public function getDisciplina() {
+      return $this->disciplina;
+    }
+  
+    public function getPresente() {
+      return $this->presente;
+    }
+  
+    public function setPresente($presente) {
+      $this->presente = $presente;
+    }
+  }
+  
+  
+  $aluno1 = new Aluno("João da Silva", "Engenharia de Software", "Programação Orientada a Objetos", 1);
+  $aluno2 = new Aluno("Maria da Silva", "Engenharia de Software", "Banco de Dados", 1);
+  $aluno3 = new Aluno("Pedro da Silva", "Engenharia de Software", "Sistemas Operacionais", 0);
+  $aluno4 = new Aluno("Ana da Silva", "Engenharia de Software", "Matemática Discreta", 1);
+  $aluno5 = new Aluno("José da Silva", "Engenharia de Software", "Fundamentos de Programação", 0);
+  
+  // Cria um array para armazenar as instâncias da classe Aluno
+  $alunos = array($aluno1, $aluno2, $aluno3, $aluno4, $aluno5);
+  
+  
+  $totalPresentes = 0;
+  $totalFaltantes = 0;
+  foreach ($alunos as $aluno) {
+    if ($aluno->getPresente()) {
+      $totalPresentes++;
+    } else {
+      $totalFaltantes++;
+    }
+  }
+  
+  
+  echo "Lista de alunos:\n";
+  foreach ($alunos as $aluno) {
+    echo "Nome: " . $aluno->getNome() . " | Presente: " . ($aluno->getPresente() ? "Sim" : "Não") . "\n";
+  }
+  
+  
+  echo "Total de alunos presentes: " . $totalPresentes . "\n";
+  echo "Total de alunos faltantes: " . $totalFaltantes . "\n";
